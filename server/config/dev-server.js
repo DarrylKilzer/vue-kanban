@@ -18,7 +18,7 @@ function Validate(req, res, next) {
     // ONLY ALLOW GET METHOD IF NOT LOGGED IN 
     console.log(req.session)
     if (req.method !== 'GET' && !req.session.uid) {
-        return res.send({ error: 'Please Login or Register to continue' })
+        return res.status(401).send({ error: 'Please Login or Register to continue' })
     }
     return next()
 }
@@ -45,7 +45,7 @@ let io = require('socket.io')(server, {
     origins: '*:*'
 })
 
-io.on('connection', function (socket) {
+io.on('connection', function(socket) {
     socket.emit('CONNECTED', {
         socket: socket.id,
         message: 'Welcome to the Jungle'
