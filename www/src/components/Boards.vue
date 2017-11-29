@@ -8,28 +8,29 @@
 </template>
 
 <script>
-export default {
-  name: 'boards',
-  mounted(){
-    this.$store.dispatch('getBoards')
-  },
-  computed:{
-    boards(){
-      return this.$store.state.boards
+    export default {
+        name: 'boards',
+        mounted() {
+            this.$store.dispatch('getBoards')
+        },
+        computed: {
+            boards() {
+                return this.$store.state.boards
+            }
+
+        },
+        methods: {
+            createBoard() {
+                this.$store.dispatch('createBoard', {
+                    name: 'Testing board creation',
+                    description: 'blarg'
+                })
+            },
+            removeBoard(board) {
+                this.$store.dispatch('removeBoard', board)
+            }
+        }
     }
-  },
-  methods:{
-    createBoard(){
-      this.$store.dispatch('createBoard', {
-        name: 'Testing board creation',
-        description: 'blarg'
-      })
-    },
-    removeBoard(board){
-      this.$store.dispatch('removeBoard', board)
-    }
-  }
-}
 </script>
 
 <style scoped>
