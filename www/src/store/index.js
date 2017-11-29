@@ -18,10 +18,11 @@ vue.use(vuex)
 
 var store = new vuex.Store({
     state: {
-        boards: [{ name: 'This is total rubbish' }],
+        boards: [],
         activeBoard: {},
         error: {},
-        user: {}
+        user: {},
+        lists: []
     },
     mutations: {
         setBoards(state, data) {
@@ -35,6 +36,9 @@ var store = new vuex.Store({
         },
         setUser(state, user) {
             state.user = user
+        },
+        setLists(state, lists) {
+            state.lists = lists
         }
     },
     actions: {
@@ -78,6 +82,15 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
+        createList({ commit, dispatch }, list) {
+            api.post('lists/', list)
+                .then(res => {
+                    dispatch('getLists')
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+        }
         //ERROR FUNCTIONS
         handleError({ commit, dispatch }, err) {
             commit('handleError', err)

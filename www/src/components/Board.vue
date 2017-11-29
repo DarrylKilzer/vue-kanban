@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import list from "./list"
     export default {
         name: 'board',
         mounted() {
@@ -14,6 +15,9 @@
             board() {
                 return this.$store.state.activeBoard
             }
+        },
+        components: {
+            list
         }
     }
 </script>
