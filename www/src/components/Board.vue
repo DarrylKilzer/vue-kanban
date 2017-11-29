@@ -5,17 +5,17 @@
 </template>
 
 <script>
-export default {
-  name: 'board',
-  mounted(){
-    this.$root.$store.dispatch('getBoard',this.$route.params.id)
-  },
-  computed:{
-    board(){
-      return this.$store.state.activeBoard
+    export default {
+        name: 'board',
+        mounted() {
+            this.$store.dispatch('getBoard', this.$route.params.id)
+        },
+        computed: {
+            board() {
+                return this.$store.state.activeBoard
+            }
+        }
     }
-  }
-}
 </script>
 
 <style scoped>
