@@ -90,7 +90,16 @@ var store = new vuex.Store({
                 .catch(err => {
                     commit('handleError', err)
                 })
-        }
+        },
+        // getLists({ commit, dispatch}, list){
+        //   api('lists/' + id)
+        //   .then(res => {
+        //       commit('setActiveList', res.data.data)
+        //   })
+        //   .catch(err => {
+        //       commit('handleError', err)
+        //   })
+        // },
         //ERROR FUNCTIONS
         handleError({ commit, dispatch }, err) {
             commit('handleError', err)
