@@ -9,7 +9,9 @@ const actions = {
 const models = {
     board: {
         name: 'Board',
-        endpoint: 'boards'
+        endpoint: 'boards',
+        //preventDefaultApi: true,
+        useCustomRoutes: true
     },
     list: {
         name: 'List',
