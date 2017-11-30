@@ -44,7 +44,7 @@ var store = new vuex.Store({
     actions: {
         //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
 
-        //THESE ARE ALL BOARD FUNCTIONS
+        //THESE ARE BOARD FUNCTIONS
         getBoards({ commit, dispatch }) {
             api('boards')
                 .then(res => {
@@ -82,6 +82,7 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
+        //THESE ARE LIST FUNCTIONS
         createList({ commit, dispatch }, list) {
             api.post('lists/', list)
                 .then(res => {
