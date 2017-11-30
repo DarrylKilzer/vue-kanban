@@ -10,7 +10,11 @@ const models = {
     board: {
         name: 'Board',
         endpoint: 'boards',
-        //preventDefaultApi: true,
+        useCustomRoutes: true
+    },
+    task: {
+        name: 'Task',
+        endpoint: 'tasks',
         useCustomRoutes: true
     },
     list: {

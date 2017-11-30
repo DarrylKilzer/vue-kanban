@@ -16,7 +16,7 @@ module.exports = {
         }
     },
     sharedBoards: {
-        path: '/sharedBoards',
+        path: '/sharedboards',
         reqType: 'get',
         method(req, res, next) {
             Boards.find({ collaborators: { $in: req.session.uid } })

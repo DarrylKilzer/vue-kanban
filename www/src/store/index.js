@@ -22,7 +22,8 @@ var store = new vuex.Store({
         activeBoard: {},
         error: {},
         user: {},
-        lists: []
+        lists: [],
+        tasks: []
     },
     mutations: {
         setBoards(state, data) {
@@ -39,6 +40,9 @@ var store = new vuex.Store({
         },
         setLists(state, lists) {
             state.lists = lists
+        },
+        setTasks(state, tasks) {
+            state.tasks = tasks
         }
     },
     actions: {
@@ -46,7 +50,7 @@ var store = new vuex.Store({
 
         //THESE ARE BOARD FUNCTIONS
         getBoards({ commit, dispatch }) {
-            api('boards')
+            api('userboards' )
                 .then(res => {
                     commit('setBoards', res.data.data)
                 })
@@ -64,7 +68,7 @@ var store = new vuex.Store({
                 })
         },
         createBoard({ commit, dispatch }, board) {
-            debugger
+            
             api.post('boards/', board)
                 .then(res => {
                     dispatch('getBoards')
@@ -111,14 +115,32 @@ var store = new vuex.Store({
         //             commit('handleError', err)
         //         })
         // },
-
+        getTasks({ commit, dispatch }, payload) {
+            api('boards/' + boardId + '/lists' + payload.listId + '/tasks')
+                .then(res => {
+                    console.log(res)
+                    commit('setTasks', res.data.data)
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+        },
+        createTask({ commit, dispatch }, task) {
+            api.post('tasks/', task)
+                .then(res => {
+                    dispatch('getTasks')
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+        },
         //ERROR FUNCTIONS
         handleError({ commit, dispatch }, err) {
             commit('handleError', err)
         },
         //LOGIN FUNCTIONS
         login({ commit, dispatch }, payload) {
-            debugger
+            
             auth.post('login', payload)
                 .then(res => {
                     commit('setUser', res.data.data)
@@ -128,6 +150,45 @@ var store = new vuex.Store({
                 .catch(err => {
                     commit('handleError', err)
                 })
+        },
+        register({ commit, dispatch }, payload) {
+            
+            auth.post('register', payload)
+                .then(res => {
+                    commit('setUser', res.data.data)
+                    router.push({ name: 'Boards' })
+                    console.log('User account successfully created')
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+
+        },
+        logout({ commit, dispatch }) {  
+            auth.delete('logout')
+                .then(res => {
+                    commit('setUser', {})
+                    router.push({ name: 'Login' })
+                    console.log('User session terminated')
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+
+        },
+        authenticate({ commit, dispatch }) {  
+            auth.get('authenticate')
+                .then(res => {
+                
+                    router.push({ name: 'Boards' })
+                    commit('setUser', res.data.data)
+                })
+                .catch(err => {
+                                       
+                    commit('handleError', err)
+                    router.push({ name: 'Login' })
+                })
+
         }
 
     }
