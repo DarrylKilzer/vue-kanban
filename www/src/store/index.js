@@ -50,7 +50,7 @@ var store = new vuex.Store({
 
         //THESE ARE BOARD FUNCTIONS
         getBoards({ commit, dispatch }) {
-            api('userboards' )
+            api('userboards')
                 .then(res => {
                     commit('setBoards', res.data.data)
                 })
@@ -68,7 +68,7 @@ var store = new vuex.Store({
                 })
         },
         createBoard({ commit, dispatch }, board) {
-            
+
             api.post('boards/', board)
                 .then(res => {
                     dispatch('getBoards')
@@ -80,7 +80,7 @@ var store = new vuex.Store({
         removeBoard({ commit, dispatch }, board) {
             api.delete('boards/' + board._id)
                 .then(res => {
-                    this.getBoards()
+                    dispatch('getBoards')
                 })
                 .catch(err => {
                     commit('handleError', err)
@@ -140,7 +140,7 @@ var store = new vuex.Store({
         },
         //LOGIN FUNCTIONS
         login({ commit, dispatch }, payload) {
-            
+
             auth.post('login', payload)
                 .then(res => {
                     commit('setUser', res.data.data)
@@ -152,7 +152,7 @@ var store = new vuex.Store({
                 })
         },
         register({ commit, dispatch }, payload) {
-            
+
             auth.post('register', payload)
                 .then(res => {
                     commit('setUser', res.data.data)
@@ -164,7 +164,7 @@ var store = new vuex.Store({
                 })
 
         },
-        logout({ commit, dispatch }) {  
+        logout({ commit, dispatch }) {
             auth.delete('logout')
                 .then(res => {
                     commit('setUser', {})
@@ -176,15 +176,15 @@ var store = new vuex.Store({
                 })
 
         },
-        authenticate({ commit, dispatch }) {  
+        authenticate({ commit, dispatch }) {
             auth.get('authenticate')
                 .then(res => {
-                
+
                     router.push({ name: 'Boards' })
                     commit('setUser', res.data.data)
                 })
                 .catch(err => {
-                                       
+
                     commit('handleError', err)
                     router.push({ name: 'Login' })
                 })
