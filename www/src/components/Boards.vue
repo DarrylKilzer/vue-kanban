@@ -6,9 +6,9 @@
                   <input class="form-control" type="text" name="board" placeholder="board name" v-model='board.name' required>
               </div>
               </form>
-    <button type="submit">Add Board</button>
+    <button @click="createBoard">Add Board</button>
     <ol>
-      <li v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <button class= "btn btn-primary" @click="removeBoard(board)">delete</button></li>
+      <li v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <button class= "btn btn-danger" @click="removeBoard(board)">delete</button></li>
     </ol>
   </div>
 </template>

@@ -115,6 +115,7 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
+        //THESE ARE THE TASK FUNCTIONS
         getTasks({ commit, dispatch }, payload) {
             api('boards/' + boardId + '/lists' + payload.listId + '/tasks')
                 .then(res => {
