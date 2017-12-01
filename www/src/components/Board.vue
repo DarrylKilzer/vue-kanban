@@ -6,7 +6,8 @@
           <div class="form-group">
               <label for="list">Create New List</label>
               <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
-          </div>
+          <button type="submit">Add List</button>
+        </div>
       </form>
       </div>
 <button @click="createList">Add List</button>
@@ -61,5 +62,10 @@
 </script>
 
 <style scoped>
+
+.h1{
+    color: whitesmoke;
+    font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
 
 </style>

@@ -1,15 +1,15 @@
 <template>
   <div> 
           <form class="boardForm" @submit.prevent="createBoard">
-              <div class="form-group">
+              <div class="form-group ">
                   <label for="board">Board Name</label>
-                  <input class="form-control" type="text" name="board" placeholder="board name" v-model='board.name' required>
+                  <input class="form-control " type="text" name="board" placeholder="board name" v-model='board.name' required>
               </div>
               </form>
-    <button @click="createBoard">Add Board</button>
-    <ol>
-      <li v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <button class= "btn btn-danger" @click="removeBoard(board)">delete</button></li>
-    </ol>
+    <button type="submit">Add Board</button>
+   <div class="row">
+      <div class="col-xs-6 col-sm-4 col-md-3 text-right" v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <button class= "btn btn-danger" @click="removeBoard(board)">delete</button></div>
+  </div>
   </div>
 </template>
 
