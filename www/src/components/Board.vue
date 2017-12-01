@@ -6,7 +6,6 @@
           <div class="form-group">
             <label for="list">Create New List</label>
             <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
-            <input class="form-control" type="text" name="listDescription" placeholder="description" v-model='list.description'>
             <button type="submit">Add List</button>
         </div>
       </form>
@@ -30,6 +29,7 @@
                 list: {
                     name: "",
                     description: ""
+                
                 }
             }
         },
