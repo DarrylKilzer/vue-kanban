@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-    
+                <h3>{{taskprop.name}}</h3>
             
         </div>
     </div>
@@ -9,8 +9,8 @@
 
 <script>
     export default {
-        name: '',
-        props: [""],
+        name: 'task',
+        props: ["taskprop"],
         data() {
             return {}
         },

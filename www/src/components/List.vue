@@ -1,13 +1,20 @@
 <template>
     <div>
         <div>
+            
             <h3>{{listprop.name}}</h3>
             <a><p class="text-right" id="end">Delete</p></a>
             <form class="taskForm" @submit.prevent="createTask">
                 <div class="form-group">
-                  <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
+                        <label for="task">Create New List</label>
+                        <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
+                        <button type="submit">Add Task</button>
+        
+
+
+<!--                   <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
                   <button class="btn btn-primary" @click="createTask">Add Task</button>
-              </div>
+ -->              </div>
             </form>
             <div v-for="task in tasks">
                 <task :taskprop="task"></task>
