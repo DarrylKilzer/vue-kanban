@@ -2,15 +2,14 @@
   <div> 
     <div>
       <h1>{{board.name}}</h1>
-      <form class="boardForm" @submit.prevent="createBoard">
+      <form class="boardForm col-xs-6 col-sm-4 col-md-3" @submit.prevent="createBoard">
           <div class="form-group">
               <label for="list">Create New List</label>
               <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
-          </div>
+          <button type="submit">Add List</button>
+        </div>
       </form>
-      </div>
-<button type="submit">Add List</button>
-    
+    </div>
   </div>
 </template>
 
@@ -57,5 +56,10 @@
 </script>
 
 <style scoped>
+
+.h1{
+    color: whitesmoke;
+    font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
 
 </style>
