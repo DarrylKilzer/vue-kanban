@@ -2,14 +2,14 @@
   <div> 
     <div>
       <h1>{{board.name}}</h1>
-      <form class="boardForm" @submit.prevent="createBoard">
+      <form class="listForm" @submit.prevent="createList">
           <div class="form-group">
               <label for="list">Create New List</label>
               <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
           </div>
       </form>
       </div>
-<button type="submit">Add List</button>
+<button @click="createList">Add List</button>
     
   </div>
 </template>
