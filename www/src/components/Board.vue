@@ -37,6 +37,8 @@
             this.$store.dispatch('getBoard', this.$route.params.id)
             this.$store.dispatch('getLists', this.$route.params.id)
 
+
+
         },
         computed: {
             board() {

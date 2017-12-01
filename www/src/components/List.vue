@@ -18,6 +18,7 @@
 </template>
 
 <script>
+    import task from "./task"
     export default {
         name: 'list',
         props: ["listprop"],
@@ -29,6 +30,7 @@
                 }
             }
         },
+       
         computed: {
             tasks() {
                 return this.$store.state.tasks

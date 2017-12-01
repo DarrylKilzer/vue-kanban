@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-    
+            <h2 class="task">{{task.name}}</h2>
             
         </div>
     </div>
@@ -12,7 +12,8 @@
         name: '',
         props: [""],
         data() {
-            return {}
+            return {
+            }
         },
         computed: {},
         methods: {},
