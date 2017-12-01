@@ -97,7 +97,7 @@ var store = new vuex.Store({
                 })
         },
         getLists({ commit, dispatch }, boardId) {
-            debugger
+
             api('boards/' + boardId + '/lists')
                 .then(res => {
                     console.log(res)

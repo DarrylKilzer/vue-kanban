@@ -4,16 +4,20 @@
       <h1>{{board.name}}</h1>
       <form class="listForm" @submit.prevent="createList">
           <div class="form-group">
-              <label for="list">Create New List</label>
-              <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
-          <button type="submit">Add List</button>
+            <label for="list">Create New List</label>
+            <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
+            <input class="form-control" type="text" name="listDescription" placeholder="description" v-model='list.description'>
+            <button type="submit">Add List</button>
         </div>
       </form>
-      </div>
-<button @click="createList">Add List</button>
-<ol>
-        <li v-for="list in lists"><router-link :to="'/boards/'+board._id/lists/'+list._id/'">{{list.name}}</router-link> <button class= "btn btn-danger" @click="removeList(list)">delete</button></li>
-      </ol>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div v-for="list in lists">
+                <list :listprop="list"></list>
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -24,7 +28,8 @@
         data() {
             return {
                 list: {
-                    name: ""
+                    name: "",
+                    description: ""
                 }
             }
         },
@@ -45,6 +50,7 @@
             createList() {
                 this.list = {
                     name: this.list.name,
+                    description: this.list.description,
                     boardId: this.board._id
                 }
                 this.$store.dispatch('createList', this.list)
@@ -62,10 +68,8 @@
 </script>
 
 <style scoped>
-
-.h1{
-    color: whitesmoke;
-    font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-}
-
+    .h1 {
+        color: whitesmoke;
+        font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    }
 </style>
