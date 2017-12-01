@@ -90,13 +90,14 @@ var store = new vuex.Store({
         createList({ commit, dispatch }, list) {
             api.post('lists/', list)
                 .then(res => {
-                    dispatch('getLists')
+                    dispatch('getLists', list.boardId)
                 })
                 .catch(err => {
                     commit('handleError', err)
                 })
         },
         getLists({ commit, dispatch }, boardId) {
+            debugger
             api('boards/' + boardId + '/lists')
                 .then(res => {
                     console.log(res)
