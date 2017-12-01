@@ -8,7 +8,7 @@
               </form>
     <button type="submit">Add Board</button>
    <div class="row">
-      <div class="col-xs-6 col-sm-4 col-md-3 text-right" v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <button class= "btn btn-primary" @click="removeBoard(board)">delete</button></div>
+      <div class="col-xs-6 col-sm-4 col-md-3 text-right" v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <button class= "btn btn-danger" @click="removeBoard(board)">delete</button></div>
   </div>
   </div>
 </template>
