@@ -23,7 +23,7 @@ var store = new vuex.Store({
         error: {},
         user: {},
         lists: [],
-        tasks: []
+        tasks: {}
     },
     mutations: {
         setBoards(state, data) {
