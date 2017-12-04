@@ -3,7 +3,7 @@
         <div>
             <h3>{{listprop.name}}</h3>
             <a>
-                <p class="text-right" id="end">Delete List</p>
+                <p class="text-right" id="end" @click="removeList">Delete List</p>
             </a>
             <form class="taskForm" @submit.prevent="createTask">
                 <div class="form-group">
@@ -40,10 +40,10 @@
         },
         mounted() {
             this.$store.dispatch('getTasks',
-               {
-                   boardId: this.$route.params.id,
-                   listId: this.listprop._id
-               })
+                {
+                    boardId: this.$route.params.id,
+                    listId: this.listprop._id
+                })
 
         },
 
@@ -61,13 +61,13 @@
                     boardId: this.listprop.boardId,
                     listId: this.listprop._id
                 }
-
+              
                 this.$store.dispatch('createTask', this.task)
 
-            
+
             },
-            removeTask(task) {
-                this.$store.dispatch('removeTask', task)
+            removeList() {
+                this.$store.dispatch('removeList', this.listprop)
 
             }
         },

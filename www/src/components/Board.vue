@@ -56,7 +56,10 @@
                     boardId: this.board._id
                 }
                 this.$store.dispatch('createList', this.list)
-
+                
+                this.list = {
+                    name: ""
+                }
             },
             removeList(list) {
                 this.$store.dispatch('removeList', list)
