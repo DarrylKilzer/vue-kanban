@@ -39,10 +39,7 @@
             }
         },
         mounted() {
-            this.$store.dispatch('getTasks',
-            { boardId: this.$route.params.id,
-              listId: this.listprop._id
-            })
+            this.$store.dispatch('getTasks', this.$route.params.id)
 
         },
 
