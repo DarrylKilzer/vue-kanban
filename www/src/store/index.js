@@ -42,12 +42,14 @@ var store = new vuex.Store({
             state.lists = lists
         },
         setTasks(state, tasks) {
-            state.tasks = tasks
+            var listId = tasks[0].listId
+            if(tasks[0]){
+            vue.set(state.tasks, listId, tasks)
+            }
         }
     },
     actions: {
         //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
-
         //THESE ARE BOARD FUNCTIONS
         getBoards({ commit, dispatch }) {
             api('userboards')
@@ -119,7 +121,6 @@ var store = new vuex.Store({
         getTasks({ commit, dispatch }, payload) {
             api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks')
                 .then(res => {
-                    console.log(res)
                     commit('setTasks', res.data.data)
                 })
                 .catch(err => {
@@ -137,7 +138,7 @@ var store = new vuex.Store({
         //             commit('handleError', err)
         //         })
         // },
-        createTask({ commit, dispatch }, task) {debugger
+        createTask({ commit, dispatch }, task) {
             api.post('tasks/', task)
                 .then(res => {
                     dispatch('getTasks', task)

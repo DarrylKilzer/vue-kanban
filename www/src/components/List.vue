@@ -8,7 +8,7 @@
             <form class="taskForm" @submit.prevent="createTask">
                 <div class="form-group">
                     <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
-                    <button class="btn btn-primary" @click="createTask">
+                    <button class="btn btn-primary">
                         <samp>Add Task</samp>
                     </button>
                 </div>
@@ -49,7 +49,7 @@
 
         computed: {
             tasks() {
-                return this.$store.state.tasks
+                return this.$store.state.tasks[this.listprop._id]
 
             }
         },
@@ -64,10 +64,7 @@
 
                 this.$store.dispatch('createTask', this.task)
 
-                /*    this.list = {
-                       name: this.list.name,
-                       description: this.list.description,
-                       boardId: this.board._id */
+            
             },
             removeTask(task) {
                 this.$store.dispatch('removeTask', task)
