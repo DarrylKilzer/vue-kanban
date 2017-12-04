@@ -1,16 +1,17 @@
 <template>
     <div>
         <div>
-            <h2 class="task text-center">{{task.name}}</h2>
+            <h2 class="task text-center">{{taskprop.name}}</h2>
             
         </div>
     </div>
 </template>
 
 <script>
+ //   import comment from "./comment"
     export default {
         name: '',
-        props: [""],
+        props: ["taskprop"],
         data() {
             return {
             }

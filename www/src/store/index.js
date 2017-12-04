@@ -117,7 +117,7 @@ var store = new vuex.Store({
                 })
         },
         getTasks({ commit, dispatch }, payload) {
-            api('boards/' + boardId + '/lists' + payload.listId + '/tasks')
+            api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks')
                 .then(res => {
                     console.log(res)
                     commit('setTasks', res.data.data)
@@ -137,10 +137,10 @@ var store = new vuex.Store({
         //             commit('handleError', err)
         //         })
         // },
-        createTask({ commit, dispatch }, list) {debugger
-            api.post('tasks/', list)
+        createTask({ commit, dispatch }, task) {debugger
+            api.post('tasks/', task)
                 .then(res => {
-                    dispatch('getTasks', list.boardId)
+                    dispatch('getTasks', task)
                 })
                 .catch(err => {
                     commit('handleError', err)

@@ -47,7 +47,6 @@
                     description: this.task.description,
                     boardId: this.listprop.boardId,
                     listId: this.listprop._id 
-                    // listId: this.listprop.listId  <== for comments
                 }
 
                 this.$store.dispatch('createTask', this.task)
@@ -63,7 +62,7 @@
             }
         },
         components: {   
-            
+            task
         }
     }
 </script>
