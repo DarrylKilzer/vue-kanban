@@ -1,12 +1,25 @@
 <template>
   <body>
-    <div class="container-fluid main">
-    
-  <div id="app">
-    <a><h3 @click="logout" class="logout">Log Out</h3></a>
+    <div class="nav">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+         <a class="navbar-brand" href="#">Woooowwwwww</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#"></a></li>
+          <li><a href="">Home</a></li>
+          <li><a href="#">My Boards</a></li>
+          <li><a href="#"></a></li>
+          <a><h4 @click="logout" class="logout">Log Out</h4></a>
+        </ul>
+      </div>
+    </nav>
+   
     <div class="row"></div>
     <router-view></router-view>
   </div>
+</div>
 </div>
 </body>
 
@@ -47,7 +60,7 @@
     overflow: hidden;
     float: right;
     cursor: pointer;
-    color: rgb(134, 18, 18);
+    color: rgb(168, 155, 155);
     outline: 1px solid black;
 }
 
