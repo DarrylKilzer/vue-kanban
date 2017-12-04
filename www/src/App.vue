@@ -4,6 +4,7 @@
     
   <div id="app">
     <a><h3 @click="logout" class="logout">Log Out</h3></a>
+    <div class="row"></div>
     <router-view></router-view>
   </div>
 </div>
@@ -47,7 +48,7 @@
     float: right;
     cursor: pointer;
     color: rgb(134, 18, 18);
-    outline: 1px solid black
+    outline: 1px solid black;
 }
 
 .logout:hover{
@@ -57,7 +58,7 @@
 }
 .main{
   height: 100vh;
-  background-color: rgba(104, 42, 19, 0.185)
+  background-color: rgba(32, 62, 117, 0.308)
 }
 
 </style>

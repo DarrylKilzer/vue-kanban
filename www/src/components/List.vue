@@ -71,4 +71,28 @@
     display: flex;
     display: inline
 }
+
+
+.taskForm {
+        width: 100vw;
+        padding-left: 30vw;
+        padding-right: 30vw;
+        text-align: center;
+        
+    }
+
+    .form-control{
+        text-align: center;
+        
+    }
+
+    .item {
+        padding: 5px;
+        text-align: center;
+    
+    }
+
+    a {
+        color: white
+    }
 </style>

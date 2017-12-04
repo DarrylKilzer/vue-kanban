@@ -74,4 +74,28 @@
         color: whitesmoke;
         font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
     }
+
+
+    .listForm {
+        width: 100vw;
+        padding-left: 30vw;
+        padding-right: 30vw;
+        text-align: center;
+        
+    }
+
+    .form-control{
+        text-align: center;
+        
+    }
+
+    .item {
+        padding: 5px;
+        text-align: center;
+    
+    }
+
+    a {
+        color: white
+    }
 </style>
