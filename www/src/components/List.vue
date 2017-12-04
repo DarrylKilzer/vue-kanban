@@ -2,21 +2,25 @@
     <div>
         <div>
             <h3>{{listprop.name}}</h3>
-            <a><p class="text-right" id="end">Delete List</p></a>
+            <a>
+                <p class="text-right" id="end">Delete List</p>
+            </a>
             <form class="taskForm" @submit.prevent="createTask">
                 <div class="form-group">
-                  <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
-                  <button class="btn btn-primary" @click="createTask"><samp>Add Task</samp></button>
-              </div>
+                    <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
+                    <button class="btn btn-primary" @click="createTask">
+                        <samp>Add Task</samp>
+                    </button>
+                </div>
             </form>
             <div v-for="task in tasks">
                 <div class="row text-center">
                     <div class="col-xs-12">
-                <task :taskprop="task"></task>
+                        <task :taskprop="task"></task>
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
-            
+
         </div>
     </div>
 </template>
@@ -34,10 +38,18 @@
                 }
             }
         },
-       
+        mounted() {
+            this.$store.dispatch('getTasks',
+            { boardId: this.$route.params.id,
+              listId: this.listprop._id
+            })
+
+        },
+
         computed: {
             tasks() {
                 return this.$store.state.tasks
+
             }
         },
         methods: {
@@ -46,53 +58,53 @@
                     name: this.task.name,
                     description: this.task.description,
                     boardId: this.listprop.boardId,
-                    listId: this.listprop._id 
+                    listId: this.listprop._id
                 }
 
                 this.$store.dispatch('createTask', this.task)
 
-             /*    this.list = {
-                    name: this.list.name,
-                    description: this.list.description,
-                    boardId: this.board._id */
+                /*    this.list = {
+                       name: this.list.name,
+                       description: this.list.description,
+                       boardId: this.board._id */
             },
             removeTask(task) {
                 this.$store.dispatch('removeTask', task)
 
             }
         },
-        components: {   
+        components: {
             task
         }
     }
 </script>
 
 <style scoped>
-#end {
-    cursor: pointer;
-    color: rgb(156, 26, 26);
-    display: flex;
-    display: inline
-}
+    #end {
+        cursor: pointer;
+        color: rgb(156, 26, 26);
+        display: flex;
+        display: inline
+    }
 
 
-.taskForm {
+    .taskForm {
         width: 100vw;
         padding-left: 30vw;
         padding-right: 30vw;
         text-align: center;
-        
+
     }
 
-    .form-control{
+    .form-control {
         text-align: center;
-        
+
     }
 
     .item {
         padding: 5px;
         text-align: center;
-    
+
     }
 
     a {
