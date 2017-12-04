@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h2 class="task">{{task.name}}</h2>
+            <h2 class="task text-center">{{task.name}}</h2>
             
         </div>
     </div>

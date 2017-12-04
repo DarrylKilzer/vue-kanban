@@ -2,17 +2,27 @@
   <div> <br>
           <form class="boardForm" @submit.prevent="createBoard">
               <div class="form-group ">
-                  <label style="font-size: 2em" for="board">All Boards</label>
+                  <label style="font-size: 2em" for="board">Your Boards</label>
                   <h3>Create a new board:</h3>
-                  <input class="form-control " type="text" name="board" placeholder="board name" v-model='board.name' required>
-                  <button type="submit"><samp>Create</samp></button>
+                  <input class="form-control " type="text" name="board" placeholder="Board Name" v-model='board.name' required>
+                  <button type="submit"><samp>Create Board</samp></button>
               </div>
               </form>
-   <div class="row">
-      <div class="col-xs-6 col-sm-4 col-md-3 text-right item" v-for="board in boards">
-          <router-link :to="'/boards/'+board._id" style="font-size: 1.5em">{{board.name}}</router-link> 
-        <button class= "btn btn-danger" @click="removeBoard(board)">delete</button></div>
-  </div>
+
+            <div class="row text-center">
+        
+              <div class="card text-center">
+                    <div class="card-block" v-for="board in boards">
+                    <router-link class="card-title" :to="'/boards/'+board._id" style="font-size: 1.5em">{{board.name}}</router-link>       
+                    <button class= "btn btn-danger" @click="removeBoard(board)">delete</button></div>
+                    </div>
+                
+                  </div>
+
+            </div>
+
+   
+  
   </div>
 </template>
 
@@ -59,6 +69,10 @@
         padding-right: 30vw;
         text-align: center;
         
+    }
+
+    .btn-danger {
+        float: right;
     }
 
     .form-control{

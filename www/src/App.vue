@@ -57,7 +57,8 @@
   transition: .3s
 }
 .main{
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   background-color: rgba(32, 62, 117, 0.308)
 }
 

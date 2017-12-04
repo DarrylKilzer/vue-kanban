@@ -2,15 +2,19 @@
     <div>
         <div>
             <h3>{{listprop.name}}</h3>
-            <a><p class="text-right" id="end">Delete</p></a>
+            <a><p class="text-right" id="end">Delete List</p></a>
             <form class="taskForm" @submit.prevent="createTask">
                 <div class="form-group">
                   <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
-                  <button class="btn btn-primary" @click="createTask">Add Task</button>
+                  <button class="btn btn-primary" @click="createTask"><samp>Add Task</samp></button>
               </div>
             </form>
             <div v-for="task in tasks">
+                <div class="row text-center">
+                    <div class="col-xs-12">
                 <task :taskprop="task"></task>
+            </div>
+            </div>
             </div>
             
         </div>
