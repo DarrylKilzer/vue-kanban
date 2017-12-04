@@ -5,7 +5,7 @@
             <div class="form-group ">
                 <label style="font-size: 2em" for="board">Your Boards</label>
                 <h3>Create a new board:</h3>
-                <input class="form-control " type="text" name="board" placeholder="Board Name" v-model='board.name' required>
+                <input maxlength="25" class="form-control " type="text" name="board" placeholder="Board Name" v-model='board.name' required>
                 <button type="submit">
                     <samp>Create Board</samp>
                 </button>
