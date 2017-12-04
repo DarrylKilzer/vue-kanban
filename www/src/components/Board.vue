@@ -1,23 +1,24 @@
 <template>
-  <div> 
     <div>
-      <h1>{{board.name}}</h1>
-      <form class="listForm" @submit.prevent="createList">
-          <div class="form-group">
-            <label for="list">Create New List</label>
-            <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
-            <button type="submit">Add List</button>
+        <div>
+            <h1 style="font-size: 3em"><strong>{{board.name}}</strong></h1>
+            <form class="listForm" @submit.prevent="createList">
+                <div class="form-group">
+                    <label for="list">Create New List</label>
+                    <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
+                    <button type="submit">Add List</button>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div v-for="list in lists">
-                <list :listprop="list"></list>
+        <div class="container-fluid">
+            <div class="row">
+
+                <div v-for="list in lists">
+                    <list :listprop="list"></list>
+                </div>
             </div>
         </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -29,7 +30,7 @@
                 list: {
                     name: "",
                     description: ""
-                
+
                 }
             }
         },
@@ -56,7 +57,7 @@
                     boardId: this.board._id
                 }
                 this.$store.dispatch('createList', this.list)
-                
+
                 this.list = {
                     name: ""
                 }
@@ -75,7 +76,8 @@
 <style scoped>
     .h1 {
         color: whitesmoke;
-        font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+        font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 5em
     }
 
 
@@ -84,18 +86,18 @@
         padding-left: 30vw;
         padding-right: 30vw;
         text-align: center;
-        
+
     }
 
-    .form-control{
+    .form-control {
         text-align: center;
-        
+
     }
 
     .item {
         padding: 5px;
         text-align: center;
-    
+
     }
 
     a {

@@ -11,21 +11,15 @@
                 </button>
             </div>
         </form>
-
         <div class="row text-center">
-        
-                <div class="card text-center">
-                    <div class="card-block" v-for="board in boards">
-                        <router-link class="card-title" :to="'/boards/'+board._id" style="font-size: 1.5em">{{board.name}}</router-link>
-                        <button class="btn btn-danger" @click="removeBoard(board)">delete</button>
-                    </div>
+            <div class="card text-center">
+                <div class="card-block" v-for="board in boards">
+                    <router-link class="card-title" :to="'/boards/'+board._id" style="font-size: 1.5em">{{board.name}}</router-link>
+                    <button class="btn btn-danger" @click="removeBoard(board)">delete</button>
                 </div>
+            </div>
         </div>
-
     </div>
-
-
-
     </div>
 </template>
 

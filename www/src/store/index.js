@@ -23,7 +23,8 @@ var store = new vuex.Store({
         error: {},
         user: {},
         lists: [],
-        tasks: {}
+        tasks: {},
+        comments: {}
     },
     mutations: {
         setBoards(state, data) {
@@ -41,11 +42,11 @@ var store = new vuex.Store({
         setLists(state, lists) {
             state.lists = lists
         },
-        setTasks(state, tasks) {
-            var listId = tasks[0].listId
-            if(tasks[0]){
-            vue.set(state.tasks, listId, tasks)
-            }
+        setTasks(state, tasks) {          
+            vue.set(state.tasks, tasks.listId, tasks.data)         
+        },
+        setComments(state, comments){
+            vue.set(state.comments, comments.taskId, comments.data)
         }
     },
     actions: {
@@ -121,23 +122,13 @@ var store = new vuex.Store({
         getTasks({ commit, dispatch }, payload) {
             api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks')
                 .then(res => {
-                    commit('setTasks', res.data.data)
+                    res.data.listId = payload.listId
+                    commit('setTasks', res.data)
                 })
                 .catch(err => {
                     commit('handleError', err)
                 })
         },
-
-
-        // createList({ commit, dispatch }, list) {
-        //     api.post('lists/', list)
-        //         .then(res => {
-        //             dispatch('getLists', list.boardId)
-        //         })
-        //         .catch(err => {
-        //             commit('handleError', err)
-        //         })
-        // },
         createTask({ commit, dispatch }, task) {
             api.post('tasks/', task)
                 .then(res => {
@@ -147,10 +138,29 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
-        removeTask({ commit, dispatch }, payload) {
-            api.delete('boards/' + board._id + 'lists/' + list._id)
+        removeTask({ commit, dispatch }, task) {
+            api.delete('tasks/' + task._id)
                 .then(res => {
-                    this.getTasks()
+                    dispatch('getTasks', task)
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+        },
+        createComment({ commit, dispatch }, comment) {
+            api.post('comments/', comment)
+                .then(res => {
+                    dispatch('getComments', comment)
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+        },
+        getComments({ commit, dispatch }, payload) {
+            api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks' + payload.taskId + '/comments')
+                .then(res => {
+                    res.data.listId = payload.listId
+                    commit('setTasks', res.data)
                 })
                 .catch(err => {
                     commit('handleError', err)

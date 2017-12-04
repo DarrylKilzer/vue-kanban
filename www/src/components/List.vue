@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h3>{{listprop.name}}</h3>
+            <h2>{{listprop.name}}</h2>
             <a>
                 <p class="text-right" id="end" @click="removeList">Delete List</p>
             </a>
@@ -20,7 +20,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -61,9 +60,12 @@
                     boardId: this.listprop.boardId,
                     listId: this.listprop._id
                 }
-              
+
                 this.$store.dispatch('createTask', this.task)
 
+                this.task = {
+                    name: ""
+                }
 
             },
             removeList() {
