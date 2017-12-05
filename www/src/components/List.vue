@@ -1,29 +1,27 @@
 <template>
-    <div>
-        <div>
-            <h2>{{listprop.name}}</h2>
-            <a>
-                <p class="text-right" id="end" @click="removeList">Delete List</p>
-            </a>
-            <form class="taskForm" @submit.prevent="createTask">
-                <div class="form-group col-xs-12">
-                    <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
-                    <button class="btn btn-primary">
-                        <samp>Add Task</samp>
-                    </button>
-                </div>
-            </form>
-            <div v-for="task in tasks">
-                <div class="row text-center">
-                    <div class="col-xs-12">
-                        <task :taskprop="task"></task>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center">
+                <h2>{{listprop.name}}</h2>
+                <a><p id="end" @click="removeList">Delete List</p></a>
+                <form class="taskForm" @submit.prevent="createTask">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
+                        <button class="btn btn-primary">
+                            <samp>Add Task</samp>
+                        </button>
                     </div>
+                </form>
+
+                <div v-for="task in tasks">
+                    <task :taskprop="task"></task>
                 </div>
             </div>
            
 
         </div>
     </div>
+
 </template>
 
 <script>
@@ -112,4 +110,6 @@
     a {
         color: white
     }
+
+   
 </style>

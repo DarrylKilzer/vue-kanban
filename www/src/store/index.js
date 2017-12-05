@@ -45,10 +45,10 @@ var store = new vuex.Store({
         setTasks(state, tasks) {          
             vue.set(state.tasks, tasks.listId, tasks.data)         
         },
-       /*  setComments(state, comments){
+        setComments(state, comments){
             vue.set(state.comments, comments.taskId, comments.data)
            
-        } */
+        }
     },
     actions: {
         //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts

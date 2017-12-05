@@ -1,26 +1,24 @@
 <template>
     <div>
         <div>
-            <h1 style="font-size: 3em"><strong>{{board.name}}</strong></h1>
+            <h1 style="font-size: 3em" class="text-center">
+                <strong>{{board.name}}</strong>
+            </h1>
             <form class="listForm" @submit.prevent="createList">
                 <div class="form-group">
                     <label for="list">Create New List</label>
                     <input class="form-control" type="text" name="list" placeholder="list name" v-model='list.name' required>
-                    <button type="submit">Add List</button>
+                    <button type="submit">
+                        <samp>Add List</samp>
+                    </button>
                 </div>
             </form>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-
-                <div v-for="list in lists">
-                    <list :listprop="list"></list>
-                </div>
-            </div>
+        <div v-for="list in lists">
+            <list :listprop="list"></list>
         </div>
     </div>
 </template>
-
 <script>
     import list from "./list"
     export default {

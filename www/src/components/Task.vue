@@ -89,10 +89,25 @@
 </script>
 
 <style scoped>
+<<<<<<< HEAD
     a {
         cursor: pointer;
         color: red;
 
+=======
+.d{
+    cursor: pointer;
+    color: red;
+
+}
+.d:hover{
+    color: red;
+    
+}
+.glyphicon{
+        padding-left: 5px;
+        cursor: pointer;
+>>>>>>> 638e84eae54afcfcb111f2c1ea8056c86a4299e2
     }
 
     a:hover {
