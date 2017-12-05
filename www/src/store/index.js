@@ -2,6 +2,7 @@ import axios from 'axios'
 import vue from 'vue'
 import vuex from 'vuex'
 import router from 'router'
+import { debug } from 'util';
 
 var production = !window.location.host.includes('localhost');
 var baseUrl = production ? '//kanban.herokuapp.com/' : '//localhost:3000/';
@@ -49,12 +50,12 @@ var store = new vuex.Store({
             vue.set(state.tasks, tasks.listId, tasks.data)         
         },
         setComments(state, comments){
+            debugger
             vue.set(state.comments, comments.taskId, comments.data)
         }
     },
     actions: {
-        //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
-        //THESE ARE BOARD FUNCTIONS
+
         getBoards({ commit, dispatch }) {
             api('userboards')
                 .then(res => {
@@ -160,10 +161,10 @@ var store = new vuex.Store({
                 })
         },
         getComments({ commit, dispatch }, payload) {
-            api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks' + payload.taskId + '/comments')
+            api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks/' + payload.taskId + '/comments/')
                 .then(res => {
                     res.data.taskId = payload.taskId
-                    commit('setTasks', res.data)
+                    commit('setComments', res.data)
                 })
                 .catch(err => {
                     commit('handleError', err)

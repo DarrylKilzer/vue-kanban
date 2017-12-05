@@ -5,9 +5,9 @@ let ObjectId = mongoose.Schema.ObjectId
 var schema = new mongoose.Schema({
     message: { type: String, required: true },
     created: { type: Number, default: Date.now() },
-    boardId: { type: ObjectId, ref: models.board, required: true },
-    listId: {type: ObjectId, ref: models.list, required: true},
-    taskId: {type: ObjectID, ref: models.task, required: true}
+    boardId: { type: ObjectId, ref: models.board.name, required: true },
+    listId: {type: ObjectId, ref: models.list.name, required: true},
+    taskId: {type: ObjectId, ref: models.task.name, required: true}
 });
 
-module.exports = mongoose.model(models.comment.message, schema);
+module.exports = mongoose.model(models.comment.name, schema);

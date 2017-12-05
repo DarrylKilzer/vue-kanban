@@ -4,14 +4,14 @@ let Tasks = require('../models/task')
 let Comments = require('../models/comment')
 
 module.exports = {
-    boardTasks: {
-        path: '/boards/:boardId/lists/:listId/tasks',
+    getComments: {
+        path: '/boards/:boardId/lists/:listId/tasks/:taskId/comments',
         reqType: 'get',
         method(req, res, next) {
-            let action = 'Find List Tasks'
-            Tasks.find({ listId: req.params.listId })
-                .then(Tasks => {
-                    res.send(handleResponse(action, Tasks))
+            let action = 'Find Task Comments'
+            Comments.find({ listId: req.params.listId })
+                .then(Comments => {
+                    res.send(handleResponse(action, Comments))
                 }).catch(error => {
                     return next(handleResponse(action, null, error))
                 })
