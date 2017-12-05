@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center">
-                <h2>{{listprop.name}}</h2>
-                <a><p id="end" @click="removeList">Delete List</p></a>
+                <h2>{{listprop.name}}</h2><span id="end" @click="removeList" class="glyphicon glyphicon-trash"></span>
+                
                 <form class="taskForm" @submit.prevent="createTask">
                     <div class="form-group">
                         <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
@@ -12,14 +12,12 @@
                         </button>
                     </div>
                 </form>
-
                 <div v-for="task in tasks">
                     <task :taskprop="task"></task>
                 </div>
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -85,29 +83,24 @@
         display: inline
     }
 
-
     .taskForm {
         width: 100vw;
         padding-left: 30vw;
         padding-right: 30vw;
         text-align: center;
-
     }
 
     .form-control {
         text-align: center;
-
     }
 
     .item {
         padding: 5px;
         text-align: center;
-
     }
 
     a {
         color: white
-    }
+    } 
 
-   
 </style>
