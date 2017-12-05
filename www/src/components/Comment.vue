@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div>
         <div>
             <h2 class="comment text-center">{{commentprop.message}}</h2>
@@ -44,3 +45,26 @@ a:hover{
 
 
 </style>
+=======
+        <div>
+        </div>
+    </template>
+    
+    <script>
+        import comment from "./comment"
+        export default {
+            name: '',
+            props: [""],
+            data() {
+                return {
+                }
+            },
+            computed: {},
+            methods: {},
+            components: {}
+        }
+    </script>
+    
+    <style scoped>
+    </style>
+>>>>>>> 9a1feb75828cc6c64bb46b377fced6ce4682e9bd
