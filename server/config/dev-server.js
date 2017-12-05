@@ -32,7 +32,7 @@ function logger(req, res, next) {
 app.use(session)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(__dirname + '/../../public/server/'))
+app.use(express.static(__dirname + '/../../www/public/'))
 app.use('*', cors(corsOptions))
 app.use('/', Auth)
 
