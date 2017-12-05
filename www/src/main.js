@@ -16,7 +16,7 @@ require('../node_modules/bootstrap/less/bootstrap.less')
 // })
 
 
-
+ 
 new Vue({
     el: '#app',
     store,
