@@ -1,9 +1,9 @@
 <template>
     <div>
         <div>
-            <h2 class="task text-center">{{taskprop.name}}</h2>
-            <a><p id="end" @click="removeTask">Delete Task</p></a>
-            
+            <h5 class="task text-center">{{taskprop.name}}<a><span class="glyphicon glyphicon-option-vertical"></span></a></h5>
+            <a class="d"><p id="end" @click="removeTask">Delete Task</p></a>
+
                 
             
         </div>
@@ -35,15 +35,19 @@
 </script>
 
 <style scoped>
-a{
+.d{
     cursor: pointer;
     color: red;
 
 }
-a:hover{
+.d:hover{
     color: red;
     
 }
+.glyphicon{
+        padding-left: 5px;
+        cursor: pointer;
+    }
 
 
 </style>
