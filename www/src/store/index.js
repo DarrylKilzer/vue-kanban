@@ -45,9 +45,10 @@ var store = new vuex.Store({
         setTasks(state, tasks) {          
             vue.set(state.tasks, tasks.listId, tasks.data)         
         },
-        setComments(state, comments){
+       /*  setComments(state, comments){
             vue.set(state.comments, comments.taskId, comments.data)
-        }
+           
+        } */
     },
     actions: {
         //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
@@ -119,6 +120,7 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
+        //THESE ARE TASK FUNCTIONS
         getTasks({ commit, dispatch }, payload) {
             api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks')
                 .then(res => {
@@ -147,6 +149,7 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
+        //THESE ARE COMMENT FUNCTIONS
         createComment({ commit, dispatch }, comment) {
             api.post('comments/', comment)
                 .then(res => {
@@ -157,16 +160,24 @@ var store = new vuex.Store({
                 })
         },
         getComments({ commit, dispatch }, payload) {
-            api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks' + payload.taskId + '/comments')
+            api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks/' + payload.taskId + '/comments')
                 .then(res => {
-                    res.data.listId = payload.listId
-                    commit('setTasks', res.data)
+                    res.data.taskId = payload.taskId
+                    commit('setComments', res.data)
                 })
                 .catch(err => {
                     commit('handleError', err)
                 })
         },
-
+        removeComment({ commit, dispatch }, comment) {
+            api.delete('comments/' + comment._id)
+                .then(res => {
+                    dispatch('getComments', comment)
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+        },
         //ERROR FUNCTIONS
         handleError({ commit, dispatch }, err) {
             commit('handleError', err)

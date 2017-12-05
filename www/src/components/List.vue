@@ -6,7 +6,7 @@
                 <p class="text-right" id="end" @click="removeList">Delete List</p>
             </a>
             <form class="taskForm" @submit.prevent="createTask">
-                <div class="form-group">
+                <div class="form-group col-xs-12">
                     <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
                     <button class="btn btn-primary">
                         <samp>Add Task</samp>
@@ -20,6 +20,8 @@
                     </div>
                 </div>
             </div>
+           
+
         </div>
     </div>
 </template>
@@ -74,7 +76,8 @@
             }
         },
         components: {
-            task
+            task,
+            
         }
     }
 </script>
@@ -83,8 +86,8 @@
     #end {
         cursor: pointer;
         color: rgb(156, 26, 26);
-        display: flex;
-        display: inline
+       
+     
     }
 
 
@@ -92,18 +95,17 @@
         width: 100vw;
         padding-left: 30vw;
         padding-right: 30vw;
-        text-align: center;
-
+        
     }
 
     .form-control {
-        text-align: center;
+        
 
     }
 
     .item {
         padding: 5px;
-        text-align: center;
+      
 
     }
 
