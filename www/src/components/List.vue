@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
                 <h2>{{listprop.name}}</h2><span id="end" @click="removeList" class="glyphicon glyphicon-trash"></span>
                 <div v-for="task in tasks">
                         <task :taskprop="task"></task>
@@ -83,12 +83,6 @@
         display: inline
     }
 
-    .taskForm {
-        width: 100vw;
-        padding-left: 30vw;
-        padding-right: 30vw;
-        text-align: center;
-    }
 
     .form-control {
         text-align: center;
