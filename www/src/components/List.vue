@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div>  
+
+        
         <div>
             <h2>{{listprop.name}}</h2>
             <h6>Comment</h6>
