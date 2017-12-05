@@ -2,6 +2,13 @@
     <div>
         <div>
             <h2>{{listprop.name}}</h2>
+            <h6>Comment</h6>
+            <div class="form-group">
+                <input class="form-control" type="text" name="comment" placeholder="comment" v-model='comment.name' required>
+                <button class="btn btn-primary">
+                    <samp>Add Comment</samp>
+                </button>
+            </div>
             <a>
                 <p class="text-right" id="end" @click="removeList">Delete List</p>
             </a>
@@ -9,7 +16,7 @@
                 <div class="form-group">
                     <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
                     <button class="btn btn-primary">
-                        <samp>Add Task</samp>
+                        <p>Add Task</p>
                     </button>
                 </div>
             </form>
