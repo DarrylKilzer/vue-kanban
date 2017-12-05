@@ -1,23 +1,23 @@
 <template>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
-                <h2>{{listprop.name}}</h2><span id="end" @click="removeList" class="glyphicon glyphicon-trash"></span>
-                <div v-for="task in tasks">
-                        <task :taskprop="task"></task>
-                    </div>
-                <form class="taskForm" @submit.prevent="createTask">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
-                        <button class="btn btn-primary">
-                            <samp>Add Task</samp>
-                        </button>
-                    </div>
-                </form>
-                
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
+            <h2>{{listprop.name}}  <span id="end" @click="removeList" class="glyphicon glyphicon-trash"></span></h2>
+            
+            <div v-for="task in tasks">
+                <task :taskprop="task"></task>
             </div>
+            <form class="taskForm" @submit.prevent="createTask">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
+                    <button class="btn btn-primary">
+                        <samp>Add Task</samp>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -77,9 +77,9 @@
 
 <style scoped>
     #end {
+        font-size: small;
         cursor: pointer;
         color: rgb(156, 26, 26);
-        display: flex;
         display: inline
     }
 
@@ -88,13 +88,12 @@
         text-align: center;
     }
 
-    .item {
-        padding: 5px;
-        text-align: center;
+    a {
+        color: white;
     }
 
-    a {
-        color: white
-    } 
-
+    .row {
+        display: flex;
+        /* justify-content: space-around; */
+    }
 </style>

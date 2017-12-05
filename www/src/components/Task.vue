@@ -3,6 +3,10 @@
         <div>
             <h5 class="task text-center">{{taskprop.name}}<a><span class="glyphicon glyphicon-option-vertical"></span></a></h5>
             <a class="d"><p id="end" @click="removeTask">Delete Task</p></a>
+            <div v-for="comment in comments">
+                <p>{{}}</p>
+            </div>
+
 
                 
             
@@ -19,7 +23,13 @@
             return {
             }
         },
-        computed: {},
+
+        computed: {
+            comments() {
+                return this.$store.state.comments
+            }
+        },
+
         methods: {
             removeTask() {
                 this.$store.dispatch('removeTask', this.taskprop)
@@ -47,6 +57,10 @@
 .glyphicon{
         padding-left: 5px;
         cursor: pointer;
+    }
+
+    p{
+        font-size: .5em
     }
 
 

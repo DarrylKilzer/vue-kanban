@@ -162,7 +162,7 @@ var store = new vuex.Store({
         getComments({ commit, dispatch }, payload) {
             api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks' + payload.taskId + '/comments')
                 .then(res => {
-                    res.data.listId = payload.listId
+                    res.data.taskId = payload.taskId
                     commit('setTasks', res.data)
                 })
                 .catch(err => {
