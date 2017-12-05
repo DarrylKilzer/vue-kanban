@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div>  
 
         
@@ -28,7 +29,27 @@
                         <task :taskprop="task"></task>
                     </div>
                 </div>
+=======
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
+                <h2>{{listprop.name}}</h2><span id="end" @click="removeList" class="glyphicon glyphicon-trash"></span>
+                <div v-for="task in tasks">
+                        <task :taskprop="task"></task>
+                    </div>
+                <form class="taskForm" @submit.prevent="createTask">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="task" placeholder="task name" v-model='task.name' required>
+                        <button class="btn btn-primary">
+                            <samp>Add Task</samp>
+                        </button>
+                    </div>
+                </form>
+                
+>>>>>>> 5cc6ca8183d50d440c93764646090cc55d4ee01b
             </div>
+           
+
         </div>
     </div>
 </template>
@@ -83,7 +104,8 @@
             }
         },
         components: {
-            task
+            task,
+            
         }
     }
 </script>
@@ -92,31 +114,44 @@
     #end {
         cursor: pointer;
         color: rgb(156, 26, 26);
-        display: flex;
-        display: inline
+       
+     
     }
 
 
+<<<<<<< HEAD
     .taskForm {
         width: 100vw;
         padding-left: 30vw;
         padding-right: 30vw;
-        text-align: center;
-
+        
     }
 
     .form-control {
-        text-align: center;
+        
 
+=======
+    .form-control {
+        text-align: center;
+>>>>>>> 9a1feb75828cc6c64bb46b377fced6ce4682e9bd
     }
 
     .item {
         padding: 5px;
-        text-align: center;
+<<<<<<< HEAD
+      
 
+=======
+        text-align: center;
+>>>>>>> 9a1feb75828cc6c64bb46b377fced6ce4682e9bd
     }
 
     a {
         color: white
+<<<<<<< HEAD
     }
+=======
+    } 
+
+>>>>>>> 5cc6ca8183d50d440c93764646090cc55d4ee01b
 </style>

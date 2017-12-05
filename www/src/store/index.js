@@ -3,14 +3,17 @@ import vue from 'vue'
 import vuex from 'vuex'
 import router from 'router'
 
+var production = !window.location.host.includes('localhost');
+var baseUrl = production ? '//kanban.herokuapp.com/' : '//localhost:3000/';
+
 let api = axios.create({
-    baseURL: 'http://localhost:3000/api/',
+    baseURL: baseUrl + 'api/',
     timeout: 2000,
     withCredentials: true
 })
 
 let auth = axios.create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: baseUrl,
     timeout: 2000,
     withCredentials: true
 })
@@ -47,6 +50,7 @@ var store = new vuex.Store({
         },
         setComments(state, comments){
             vue.set(state.comments, comments.taskId, comments.data)
+           
         }
     },
     actions: {
@@ -119,6 +123,7 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
+        //THESE ARE TASK FUNCTIONS
         getTasks({ commit, dispatch }, payload) {
             api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks')
                 .then(res => {
@@ -147,6 +152,7 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
+        //THESE ARE COMMENT FUNCTIONS
         createComment({ commit, dispatch }, comment) {
             api.post('comments/', comment)
                 .then(res => {
@@ -157,16 +163,24 @@ var store = new vuex.Store({
                 })
         },
         getComments({ commit, dispatch }, payload) {
-            api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks' + payload.taskId + '/comments')
+            api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks/' + payload.taskId + '/comments')
                 .then(res => {
-                    res.data.listId = payload.listId
-                    commit('setTasks', res.data)
+                    res.data.taskId = payload.taskId
+                    commit('setComments', res.data)
                 })
                 .catch(err => {
                     commit('handleError', err)
                 })
         },
-
+        removeComment({ commit, dispatch }, comment) {
+            api.delete('comments/' + comment._id)
+                .then(res => {
+                    dispatch('getComments', comment)
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+        },
         //ERROR FUNCTIONS
         handleError({ commit, dispatch }, err) {
             commit('handleError', err)
