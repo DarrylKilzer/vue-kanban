@@ -8,7 +8,7 @@ import store from './store'
 
 require('../node_modules/bootstrap/less/bootstrap.less')
 
-let socket = io('http://localhost:3000')
+let socket = io()
 
 socket.on('CONNECTED', function(data) {
     console.log(data)
