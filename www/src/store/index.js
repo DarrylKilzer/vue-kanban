@@ -50,7 +50,6 @@ var store = new vuex.Store({
             vue.set(state.tasks, tasks.listId, tasks.data)         
         },
         setComments(state, comments){
-            debugger
             vue.set(state.comments, comments.taskId, comments.data)
         }
     },
@@ -122,6 +121,15 @@ var store = new vuex.Store({
                 .catch(err => {
                     commit('handleError', err)
                 })
+        },
+        putTask({commit, dispatch}, payload){
+            api.put('tasks/' + payload.taskId)
+            .then(res => {
+              dispatch('getTasks', payload.listId)
+            })
+            .catch(err => {
+              commit('handleError', err)
+            })
         },
         getTasks({ commit, dispatch }, payload) {
             api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks')

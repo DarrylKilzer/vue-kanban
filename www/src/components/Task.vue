@@ -6,6 +6,10 @@
                 <a>
                     <span class="glyphicon glyphicon-plane"></span>
                 </a>
+
+                <select>
+                    <option v-for="list in lists">{{list.name}}</option>
+                </select>
                 
 
             </h5>
@@ -53,6 +57,9 @@
         computed: {
             comments() {
                 return this.$store.state.comments[this.taskprop._id]
+            },
+            lists() {
+                return this.$store.state.lists
             }
         },
 

@@ -9,7 +9,7 @@ module.exports = {
         reqType: 'get',
         method(req, res, next) {
             let action = 'Find Task Comments'
-            Comments.find({ listId: req.params.listId })
+            Comments.find({ taskId: req.params.taskId })
                 .then(Comments => {
                     res.send(handleResponse(action, Comments))
                 }).catch(error => {
