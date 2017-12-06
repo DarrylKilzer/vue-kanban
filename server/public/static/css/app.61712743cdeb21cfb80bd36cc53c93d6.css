@@ -99,43 +99,37 @@ a[data-v-5337eb44] {
 }
 
 #end[data-v-3aa38f94] {
+    font-size: small;
     cursor: pointer;
     color: rgb(156, 26, 26);
-    display: -ms-flexbox;
-    display: flex;
     display: inline
-}
-.taskForm[data-v-3aa38f94] {
-    width: 100vw;
-    padding-left: 30vw;
-    padding-right: 30vw;
-    text-align: center;
 }
 .form-control[data-v-3aa38f94] {
     text-align: center;
 }
-.item[data-v-3aa38f94] {
-    padding: 5px;
-    text-align: center;
-}
 a[data-v-3aa38f94] {
-    color: white
-} 
+    color: white;
+}
+.row[data-v-3aa38f94] {
+    display: -ms-flexbox;
+    display: flex;
+    /* justify-content: space-around; */
+}
 
-
-.d[data-v-7a06f19d]{
+.d[data-v-7a06f19d] {
     cursor: pointer;
     color: red;
 }
-.d[data-v-7a06f19d]:hover{
+.d[data-v-7a06f19d]:hover {
     color: red;
 }
-.glyphicon[data-v-7a06f19d]{
-        padding-left: 5px;
-        cursor: pointer;
+.glyphicon[data-v-7a06f19d] {
+    padding-left: 5px;
+    cursor: pointer;
 }
-
-
+p[data-v-7a06f19d] {
+    font-size: .5em
+}
 
 .action {
     cursor: pointer;
@@ -6884,4 +6878,4 @@ button.close {
   }
 }
 
-/*# sourceMappingURL=app.bf0046bf4a3d58a673b015b37cca4977.css.map*/
+/*# sourceMappingURL=app.61712743cdeb21cfb80bd36cc53c93d6.css.map*/
