@@ -2,13 +2,13 @@
     <div>
         <div>
             <h5 class="task text-center">{{taskprop.name}}
+                    <span id="end" @click="removeTask" class="glyphicon glyphicon-trash"></span>
                 <a>
-                    <span class="glyphicon glyphicon-option-vertical"></span>
+                    <span class="glyphicon glyphicon-plane"></span>
                 </a>
+                
+
             </h5>
-            <a class="d">
-                <p id="end" @click="removeTask">Delete Task</p>
-            </a>
             <div v-for="comment in comments">
                 <h3>{{comment.message}}</h3>
             </div>
@@ -53,7 +53,7 @@
         computed: {
             comments() {
                 return this.$store.state.comments[this.taskprop._id]
-            }   
+            }
         },
 
         methods: {
