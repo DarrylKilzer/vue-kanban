@@ -15,7 +15,7 @@ let defaultErrorHandler = (err, req, res, next) => {
 	} else {
 		error = {
 			ok: false,
-			error: err.message,
+			error: err.message,	
 		}
 	}
 	res.status(400).send(error);
