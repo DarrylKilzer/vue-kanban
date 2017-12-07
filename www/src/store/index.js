@@ -92,7 +92,6 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
-        //THESE ARE LIST FUNCTIONS
         createList({ commit, dispatch }, list) {
             api.post('lists/', list)
                 .then(res => {
@@ -122,7 +121,7 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
-        putTask({commit, dispatch}, payload){debugger
+        putTask({commit, dispatch}, payload){
             api.put('tasks/' + payload.task._id, payload.task)
             .then(res => {
               dispatch('getTasks', payload.task)
@@ -174,6 +173,15 @@ var store = new vuex.Store({
                 .then(res => {
                     res.data.taskId = payload.taskId
                     commit('setComments', res.data)
+                })
+                .catch(err => {
+                    commit('handleError', err)
+                })
+        },
+        removeComment({ commit, dispatch }, comment) {
+            api.delete('comments/' + comment._id)
+                .then(res => {
+                    dispatch('getComments', comment)
                 })
                 .catch(err => {
                     commit('handleError', err)

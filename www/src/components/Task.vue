@@ -2,7 +2,7 @@
     <div>
         <div>
             <h3 class="task text-center">{{taskprop.name}}
-                    <span id="end" @click="removeTask" class="glyphicon glyphicon-trash"></span>
+                    <span @click="removeTask" class="glyphicon glyphicon-trash"></span>
               </h3>
               <h6>Move to:
                 <select v-on:change="putTask" v-model="listId">
@@ -10,7 +10,8 @@
                 </select>
           </h6>
             <div v-for="comment in comments">
-                <samp>"{{comment.message}}"</samp>
+                <samp>"{{comment.message}}" <span @click="removeComment(comment)" class="glyphicon glyphicon-trash"></span>
+                </samp>
             </div>
             <form class="commentForm" @submit.prevent="createComment">
                 <div class="form-group">
@@ -25,7 +26,6 @@
 </template>
 
 <script>
-    //   import comment from "./comment"
     export default {
         name: '',
         props: ["taskprop"],
@@ -57,6 +57,11 @@
         },
 
         methods: {
+            removeComment(comment) {debugger
+                this.$store.dispatch('removeComment', comment)
+                
+
+            },
             createComment() {
                 this.comment = {
                     message: this.comment.message,
