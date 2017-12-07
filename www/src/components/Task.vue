@@ -1,20 +1,16 @@
 <template>
     <div>
         <div>
-            <h5 class="task text-center">{{taskprop.name}}
+            <h3 class="task text-center">{{taskprop.name}}
                     <span id="end" @click="removeTask" class="glyphicon glyphicon-trash"></span>
-                <a>
-                    <span class="glyphicon glyphicon-plane"></span>
-                </a>
-
-                <select>
-                    <option v-for="list in lists">{{list.name}}</option>
+              </h3>
+              <h6>Move to:
+                <select v-on:change="putTask" v-model="listId">
+                    <option v-for="list in lists" :value="list._id">{{list.name}}</option>
                 </select>
-                
-
-            </h5>
+          </h6>
             <div v-for="comment in comments">
-                <h3>{{comment.message}}</h3>
+                <samp>"{{comment.message}}"</samp>
             </div>
             <form class="commentForm" @submit.prevent="createComment">
                 <div class="form-group">
@@ -24,11 +20,7 @@
                     </button>
                 </div>
             </form>
-
         </div>
-
-
-
     </div>
 </template>
 
@@ -42,7 +34,8 @@
                 comment: {
                     message: "",
 
-                }
+                },
+                listId: ""
             }
         },
         mounted() {
@@ -85,6 +78,15 @@
                     name: ""
                 }
 
+            },
+            putTask(){
+                var task = this.taskprop
+                var oldTask= {
+                    boardId: this.taskprop.boardId,
+                    listId: this.taskprop.listId
+                }
+                task.listId = this.listId
+                this.$store.dispatch('putTask', {task: task, oldTask: oldTask})
             }
 
         },

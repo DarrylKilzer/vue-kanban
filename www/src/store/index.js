@@ -122,10 +122,11 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
-        putTask({commit, dispatch}, payload){
-            api.put('tasks/' + payload.taskId)
+        putTask({commit, dispatch}, payload){debugger
+            api.put('tasks/' + payload.task._id, payload.task)
             .then(res => {
-              dispatch('getTasks', payload.listId)
+              dispatch('getTasks', payload.task)
+              dispatch('getTasks', payload.oldTask)
             })
             .catch(err => {
               commit('handleError', err)
