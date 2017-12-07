@@ -187,7 +187,6 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
-
         //ERROR FUNCTIONS
         handleError({ commit, dispatch }, err) {
             commit('handleError', err)

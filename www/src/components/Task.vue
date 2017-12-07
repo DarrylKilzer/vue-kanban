@@ -57,7 +57,7 @@
         },
 
         methods: {
-            removeComment(comment) {debugger
+            removeComment(comment) {
                 this.$store.dispatch('removeComment', comment)
                 
 
